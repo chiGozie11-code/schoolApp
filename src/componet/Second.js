@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
+import * as React from 'react';
+import Button from '@mui/material/Button';
 const Second = () => {
     return ( 
        <div>
          <div className="second-div">
             <p>focusing on your studies brings out the in you</p>
-            <Link to="/"><button>Home</button></Link>
+            <Link to="/Semester" className="linker"> <Button variant="contained" >Back</Button></Link>
         </div>
         <div className="table-div">
         <table>
