@@ -10,8 +10,8 @@ function App() {
         <Routes>
           {/* first Route */}
           <Route path='/' element={<Year/>}></Route>
-          <Route path='Semester' element={<Semster/>}></Route>
-          <Route path='Course' element={<Course/>}></Route>
+          <Route path='level/:Id/:Name/get' element={<Semster/>}></Route>
+          <Route path='semester/:Id/get' element={<Course/>}></Route>
           <Route path='Second' element={<Second/>}></Route>
           {/* stops here */}
         </Routes>

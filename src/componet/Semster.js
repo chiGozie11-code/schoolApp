@@ -1,16 +1,53 @@
-import { Link } from 'react-router-dom';
-import * as React from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import Button from '@mui/material/Button';
+import Link from '@mui/material/Link';
+import useFetch from '../hooks/useFetch';
+import { getSemestersURL } from '../api/BaseURL';
+
 const Semester = () => {
-    return (<div>
+    const { Name } = useParams()
+    const { data, isLoading, error } = useFetch(getSemestersURL)
+    const navigate = useNavigate()
+    var myList = []
+    if (data) {
+        data.map((da) => 
+        {
+            if (da.Section.match(Name)) {
+                myList.push(da)
+            }
+            return 0;
+        })
+    //   console.log(data)
+      console.log(myList);
+    }
+    return (
+      <div>
         <div>
-        <Link to="/" className="linker"> <Button variant="contained" >Back</Button></Link>
+          <Link href='/' className='linker'>
+            {' '}
+            <Button variant='contained'>Back</Button>
+          </Link>
         </div>
+        {error && <div>{error}</div>}
+        {isLoading && <div>Loading ...</div>}
         <div className='semester'>
-            <Link to="/Course" className='link'><h1>First semester</h1></Link>
-            <Link to="/Second" className='link'><h1>Second semester</h1></Link>
+          {data &&
+            myList.map((data, index) => (
+              <Link
+                component='button'
+                underline='none'
+                key={index}
+                className='link'
+                onClick={() => {
+                  navigate(`/semester/${data.Id}/get`)
+                }}
+              >
+                <h1>{data.Section}</h1>
+              </Link>
+            ))}
         </div>
-    </div>);
+      </div>
+    )
 }
 
 export default Semester;

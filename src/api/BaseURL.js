@@ -7,3 +7,6 @@ export const getLevelURL =baseurl + 'level/'
 //semester routes
 export const getSemestersURL = baseurl + 'semester/getAll'
 export const getSemesterURL = baseurl + 'semester/'
+
+//courses routes
+export const getCoursesURL = baseurl + 'course/getAll'
